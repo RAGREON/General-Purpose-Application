@@ -1,12 +1,11 @@
-namespace GpSys.Models.DTOs
+namespace Lab.Models
 {
-  public class LabDto
+  public class LabEntity
   {
-    public int Id { get; set; } 
+    public int Id { get; set; }
     public int Number { get; set; }
     public string Title { get; set; } = default!;
     public string Course { get; set; } = default!;
     public string Teacher { get; set; } = default!;
-    public string Status { get; set; } = default!;
   }
 }
