@@ -1,4 +1,4 @@
-namespace Lab.DTOs
+namespace GpSys.Models.DTOs
 {
   public record CreateLabDto(
     int Number,
