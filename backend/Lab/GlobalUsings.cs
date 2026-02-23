@@ -1,6 +1,6 @@
-global using Lab.DTOs;
+global using GpSys.Models.Entities;
+global using GpSys.Models.DTOs;
 global using Lab.Data;
-global using Lab.Models;
 global using Lab.Interfaces;
 global using Lab.Repositories;
 
