@@ -5,15 +5,8 @@ namespace Lab.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
-  public class LabController : ControllerBase
+  public class LabController(LabService _service) : ControllerBase
   {
-    private readonly LabService _service;
-
-    public LabController(LabService service)
-    {
-      _service = service;
-    }
-
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
@@ -29,10 +22,10 @@ namespace Lab.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateLab([FromBody] CreateLabDto dto)
+    public async Task<IActionResult> CreateLabAsync([FromBody] CreateLabDto dto)
     {
       int id = await _service.CreateAsync(dto);
-      return CreatedAtAction(nameof(GetById), new { id = id }, dto);
+      return CreatedAtAction(nameof(GetById), new { id }, new { id });
     }
   }
 }
