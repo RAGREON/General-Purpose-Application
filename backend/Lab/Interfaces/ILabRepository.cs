@@ -4,7 +4,7 @@ namespace Lab.Interfaces
   {
     Task<LabEntity?> GetByIdAsync(int id);
     Task<IList<LabEntity>> GetAllAsync();
-    Task CreateAsync(LabEntity lab);
+    Task AddAsync(LabEntity lab);
     Task FilterAsync();
   }
 }
