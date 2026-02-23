@@ -1,0 +1,39 @@
+services:
+  lab-app:
+    build:
+      context: .
+      target: app-runtime
+    container_name: lab-app-container
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__LAB_CONN_STR=Host=gp-system-postgres-container;Username=postgres;Password=postgres;Database=GP-System
+    ports:
+      - "8080:80"
+    restart: always
+    depends_on: 
+      - migrate
+  
+  migrate:
+    build:
+      context: .
+      target: migrate-runtime
+    container_name: lab-app-migrate-container
+    command: ["--connection", "${LAB_CONN_STR}"]
+
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    container_name: gp-system-postgres-container
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=GP-System
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ${POSTGRES_DB}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
