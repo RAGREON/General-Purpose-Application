@@ -13,7 +13,7 @@ namespace Lab.Repositories
       return await _context.Labs.ToListAsync();
     }
 
-    public async Task CreateAsync(LabEntity lab)
+    public async Task AddAsync(LabEntity lab)
     {
       await _context.Labs.AddAsync(lab);
       await _context.SaveChangesAsync();
