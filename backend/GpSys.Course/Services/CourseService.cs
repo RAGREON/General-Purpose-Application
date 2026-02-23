@@ -5,12 +5,12 @@ namespace GpSys.Course.Services
     private static CourseDto ProjectDto(CourseEntity course)
     {
       return new CourseDto
-      {
-        Id = course.Id,
-        Code = course.Code,
-        Title = course.Title,
-        Alias = course.Alias
-      };
+      (
+        course.Id,
+        course.Code,
+        course.Title,
+        course.Alias
+      );
     }
 
     public async Task<int> CreateCourseAsync(CreateCourseDto dto)
