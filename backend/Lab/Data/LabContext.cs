@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 namespace Lab.Data
 {
   public class LabContext(DbContextOptions<LabContext> options) : DbContext(options) {
