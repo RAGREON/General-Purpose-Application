@@ -16,5 +16,12 @@ namespace GpSys.Academy.Domain.Entities
       Title = title;
       Alias = alias;
     }
+
+    public void Update(string? code, string? title, string? alias)
+    {
+      if (!string.IsNullOrWhiteSpace(code)) Code = code; 
+      if (!string.IsNullOrWhiteSpace(title)) Title = title; 
+      if (!string.IsNullOrWhiteSpace(alias)) Alias = alias; 
+    }
   }
 }
