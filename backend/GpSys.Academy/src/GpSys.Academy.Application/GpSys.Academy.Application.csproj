@@ -8,7 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="14.0.0" />
-    <ProjectReference Include="../GpSys.Academy.Infrastructure/GpSys.Academy.Infrastructure.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GpSys.Academy.Domain\GpSys.Academy.Domain.csproj" />
   </ItemGroup>
 
 </Project>
