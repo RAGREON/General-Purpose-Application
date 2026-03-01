@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="../GpSys.Academy.Domain/GpSys.Academy.Domain.csproj" />
+    <ProjectReference Include="../GpSys.Academy.Application/GpSys.Academy.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.6.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0" />
   </ItemGroup>
