@@ -1,7 +1,7 @@
 using GpSys.Academy.Application.Features.Courses;
 using MediatR;
 
-namespace GpSys.Academy.Api.Endpoints
+namespace GpSys.Academy.WebApi.Endpoints
 {
   public static class CourseEndpoints
   {
@@ -13,31 +13,64 @@ namespace GpSys.Academy.Api.Endpoints
       group.MapPost("/", async (CreateCourseCommand cmd, IMediator m) =>
       {
         var result = await m.Send(cmd);
-        return result;
+
+        if (!result.IsSuccess)
+          return Results.BadRequest(new
+          {
+            result.ErrorMessage,
+            result.Errors
+          });
+
+        return Results.Ok(result.Value);
       });
 
       group.MapDelete("/{id}", async (Guid id, IMediator m) =>
       {
         var result = await m.Send(new DeleteCourseCommand(id));
-        return result;
+
+        if (!result.IsSuccess)
+          return Results.InternalServerError(new
+          {
+            result.ErrorMessage,
+            result.Errors
+          });
+
+        return Results.Ok(result.Value);
       });
 
       group.MapPut("/", async (UpdateCourseCommand cmd, IMediator m) =>
       {
         var result = await m.Send(cmd);
-        return result;
+
+        if (!result.IsSuccess)
+          return Results.InternalServerError(new
+          {
+            result.ErrorMessage,
+            result.Errors
+          });
+
+        return Results.Ok(result.Value);
       });
 
       group.MapGet("/{id}", async (Guid id, IMediator m) =>
       {
         var result = await m.Send(new GetCourseByIdQuery(id));
-        return result;
+
+        if (!result.IsSuccess)
+          return Results.BadRequest(new
+          {
+            result.ErrorMessage,
+            result.Errors
+          });
+        
+        return Results.Ok(result.Value);
       });
 
       group.MapGet("/all", async (IMediator m) =>
       {
         var result = await m.Send(new GetCoursesQuery());
-        return result;
+
+        return Results.Ok(result.Value);
       });
     }
   }
