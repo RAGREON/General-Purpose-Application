@@ -1,4 +1,4 @@
-using GpSys.Academy.Api.Endpoints;
+using GpSys.Academy.WebApi.Endpoints;
 using GpSys.Academy.Application;
 using GpSys.Academy.Infrastructure;
 
@@ -16,5 +16,10 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapCourseEndpoints();
+
+if (app.Environment.IsDevelopment())
+{
+  app.MapSeederEndpoints();
+}
 
 app.Run();
