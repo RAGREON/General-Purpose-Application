@@ -1,3 +1,5 @@
+using GpSys.Academy.Application.Common.Interfaces;
+using GpSys.Academy.Infrastructure.Data;
 using GpSys.Academy.Infrastructure.Persistence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,10 @@ namespace GpSys.Academy.Infrastructure
       {
         options.UseNpgsql(cfg.GetConnectionString(connStr));
       });
+
+      services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+
+      services.AddScoped<IDbInitializer, DbInitializer>();
       
       return services;
     }
