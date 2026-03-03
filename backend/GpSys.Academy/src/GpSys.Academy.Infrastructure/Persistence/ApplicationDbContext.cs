@@ -6,6 +6,7 @@ namespace GpSys.Academy.Infrastructure.Persistence
   public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options), IApplicationDbContext 
   {
     public DbSet<Course> Courses => Set<Course>();
+    public DbSet<Teacher> Teachers => Set<Teacher>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
