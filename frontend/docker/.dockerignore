@@ -1,0 +1,33 @@
+# Node, build output, and cache
+node_modules/
+dist/
+out-tsc/
+.angular/
+.cache/
+.tmp/
+
+# Testing and coverage
+coverage/
+cypress/
+.vite/
+
+# Logs and environment
+*.log
+.env
+.env.local
+.tsbuildinfo
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Version control and CI
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
