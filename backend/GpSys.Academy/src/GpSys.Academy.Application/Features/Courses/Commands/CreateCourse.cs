@@ -1,4 +1,3 @@
-
 namespace GpSys.Academy.Application.Features.Courses
 {
   public record CreateCourseCommand(string Code, string Title, string Alias) : IRequest<Result<Guid>>;
